@@ -1,9 +1,9 @@
-//$('#connform').ready(function(){
 
+//to connect
 $(function(){
   $('#connect').click(function(event ){
       event.preventDefault();
-  //  console.log("heree");
+  //get info from user
 var topic =$("#topic");
 var name =$("#name");
 var password =$("#password");
@@ -23,7 +23,7 @@ var user = {
   url: '/',
   data:user,
   success: function(){
-  //  window.location.href = "/user/home/"+data.id;
+
   console.log("Connected");
 
   document.getElementById("connect").value="connected";
@@ -31,15 +31,13 @@ document.getElementById("connect").disabled=true;
 document.getElementById("status").innerHTML = "Connected";
   },
   error: function(error){
-
       console.log("NOT Connected");
-
   }
   });
 });
 });
 
-
+//when a topic is subscribed
 $(function(){
   $('#submit').click(function(event ){
     event.preventDefault();
@@ -71,7 +69,7 @@ $(function(){
   error: function(error){
     if(error.responseText=='showAlert')
     alert('Not connected');
-    //echo('eeeee');
+
   }
   });
 }
@@ -79,7 +77,7 @@ $(function(){
 });
 });
 
-
+//when a message is published publish
 $(function(){
   $('#publish').click(function(event ){
       event.preventDefault();
