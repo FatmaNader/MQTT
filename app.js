@@ -1,7 +1,7 @@
 //  this is the server
 
 const port = process.env.PORT || 3000;
-//var port =3000;
+
 //require all dependencies.
 var debug = require('debug')('MQTT:server');
 var http = require('http');
@@ -16,7 +16,7 @@ var app = express(),
   http = require('http'),
   busboy = require("then-busboy");
 
-//var server = http.CreateSer
+
 //body parser middle ware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({

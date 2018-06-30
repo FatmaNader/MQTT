@@ -1,20 +1,21 @@
+//GET REQUIRED modules
 var express = require('express');
 var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({
   extended: false
 });
-var options;
 var mqtt = require('mqtt');
 
-var mytopic;
+
 module.exports = function(app) {
 
-  //var client1;
   var client;
   var server;
+  var mytopic;
+  var options;
 
   app.post('/', urlencodedParser, function(req, res) {
-
+    //get information from user
     options = {
       topic:(req.body.topic) ,
       qos: (req.body.qos),
@@ -23,12 +24,13 @@ module.exports = function(app) {
       password: (req.body.password)
     }
     server=(req.body.server);
+    //connect
     client = mqtt.connect(server, {
       will: options
     });
+
     client.on('connect', function() {
-      console.log("hello mqtt")
-      client.publish(req.body.topic, 'Hello mqtt')
+    
     })
 
     client.on('message', mqtt_messsageReceived);
