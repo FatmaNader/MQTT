@@ -1,50 +1,69 @@
-
 <html>
+
 <head>
-<title> MQTT Client </title>
-<meta charset="UTF-8">
-<script src="http://requirejs.org/docs/release/2.2.0/minified/require.js"></script>
+  <title> MQTT Client </title>
+  <meta charset="UTF-8">
+  <script src="http://requirejs.org/docs/release/2.2.0/minified/require.js"></script>
   <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
   <script src="/public/connection.js" type="text/javascript"></script>
 
 </head>
+
 <body>
-<div id="status">Connection Status: Not Connected</div>
-</div>
-<br>
-	 <form name="connform"  >
+  <div id="status">Connection Status: Not Connected</div>
+  </div>
+  <br>
+  <form name="connform" method="post">
 
-Server:  <input type="text" id="name" name="server"><br><br>
-Port:    <input type="text"id="password" name="port"><br><br>
-Topic:    <input type="text"id="topic" name="topic"><br><br>
-User name:    <input type="text"id="name" name="name"><br><br>
-Password:    <input type="text"id="password" name="password"><br><br>
+    Server: <input type="text" id="server" name="server" value= "mqtt://broker.hivemq.com" required><br><br>
+    Last-will Topic: <input type="text" id="topic" name="topic"> <br><br>
+    User name: <input type="text" id="name" name="name" value="my user" required><br><br>
+   Password:<input type="text" id="password" name="password" required><br>
+    <br>QOS <select id="qos" required>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+</select>
+    <br><input type="submit" id="connect" value="Connect">
 
+  </form>
+  <hr>
+  <form name="subs" action="">
+    Subscribe Topic: <input type="text" id="Stopic" value= "test" name="Stopic"><br>
+    <br>QOS <select id="Sqos" required>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  </select>
+ <br><input id="submit" type="submit" value="submit">
 
-<input type="submit" id="connect" value="Connect">
-</form>
 <hr>
-<form name="subs" action="" >
-Subscribe Topic:   <input type="text" id="Stopic" name="Stopic"><br><br>
-  <input id="submit" type="submit" value="submit">
+  </form>
 
-</form>
+  <form name="smessage" action="">
 
-<form name="smessage" action="" >
+    Message: <input type="text" id="Pmessage" name="Pmessage"><br><br> Publish Topic: <input type="text" id="Ptopic" name="Ptopic"><br><br>
+    <br>QOS <select id="Pqos" required>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+</select><br>
+    <input type="submit" id="publish" value="publish">
+  </form>
+  <hr>
+  Messages:
+  <p id="messages"></p>
 
-Message: <input type="text" id="Pmessage" name="Pmessage"><br><br>
-Publish Topic:   <input type="text" id="Ptopic" name="Ptopic"><br><br>
-<input type="submit" id="publish" value="publish">
-</form>
-Messages:<p id="messages"></p>
+  <tbody>
+    <tr>
+      <td>
 
-<tbody>
-        <tr>
+      </td>
+    </tr>
 
-          <td>
+</body>
 
-          </td>
-        </tr>
-
-  </body>
 </html>

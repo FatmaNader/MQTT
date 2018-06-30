@@ -1,16 +1,22 @@
+//$('#connform').ready(function(){
 
 $(function(){
   $('#connect').click(function(event ){
       event.preventDefault();
-    console.log("heree");
+  //  console.log("heree");
 var topic =$("#topic");
 var name =$("#name");
 var password =$("#password");
+var qos=$("qos");
+var server=$("server");
+
 
 var user = {
   topic : topic.val(),
   name : name.val(),
-  password : password.val()
+  password : password.val(),
+  qos:qos.val(),
+  server:server.val()
 };
     $.ajax ({
   type: 'POST',
@@ -22,6 +28,7 @@ var user = {
 
   document.getElementById("connect").value="connected";
 document.getElementById("connect").disabled=true;
+document.getElementById("status").innerHTML = "Connected";
   },
   error: function(error){
 
@@ -36,11 +43,22 @@ document.getElementById("connect").disabled=true;
 $(function(){
   $('#submit').click(function(event ){
     event.preventDefault();
-    console.log("heree");
+
     var topic =$("#Stopic");
+    var qos=$('#Sqos');
     var  subscribe ={
-        topic:topic.val()
+        topic:topic.val(),
+        qos:qos.val()
     };
+    if(topic.val()=="" )
+    {
+      alert("please write topc to be subscribed");
+  }
+  else if(document.getElementById("status").innerHTML!= "Connected")
+  {
+  alert("please connect");
+  }
+    else{
     $.ajax ({
   type: 'POST',
   url: '/subscribe',
@@ -56,6 +74,8 @@ $(function(){
     //echo('eeeee');
   }
   });
+}
+
 });
 });
 
@@ -66,9 +86,16 @@ $(function(){
     console.log("publish");
 var Ptopic =$("#Ptopic");
 var Pmessage =$("#Pmessage");
+var Pqos=$('#Pqos');
 
+if(document.getElementById("status").innerHTML!= "Connected")
+{
+alert("please connect");
+}
+else{
 var user = {
   Ptopic : Ptopic.val(),
+    Pqos : Pqos.val(),
 Pmessage : Pmessage.val()
 };
     $.ajax ({
@@ -86,5 +113,6 @@ Pmessage : Pmessage.val()
 
   }
   });
+}
 });
 });

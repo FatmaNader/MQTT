@@ -1,6 +1,6 @@
 //  this is the server
 
-const port= process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 //var port =3000;
 //require all dependencies.
 var debug = require('debug')('MQTT:server');
@@ -11,34 +11,30 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var index = require ('./routes/index');
+var index = require('./routes/index');
 var app = express(),
-http = require('http'),
-busboy = require("then-busboy");
+  http = require('http'),
+  busboy = require("then-busboy");
 
 //var server = http.CreateSer
 //body parser middle ware
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 
 //handle static files
 app.use('/public', express.static(__dirname + '/public'));
 
 //adjust views and ejs
-app.set('views',path.join(__dirname,'views'));
-app.set('view engine','ejs');
-app.engine('html',require('ejs').renderFile);
-app.listen(port, function(){
-  console.log('Server started on port '+port);
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+app.engine('html', require('ejs').renderFile);
+app.listen(port, function() {
+  console.log('Server started on port ' + port);
 });
 
-//app.use('/', require('./routes/index.js'));
-
 index(app);
-
-
-
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
