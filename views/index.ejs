@@ -1,12 +1,50 @@
-<!DOCTYPE html>
-  <html>
+
+<html>
 <head>
-  <title>ooooo</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<title> MQTT Client </title>
+<meta charset="UTF-8">
+<script src="http://requirejs.org/docs/release/2.2.0/minified/require.js"></script>
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+  <script src="/public/connection.js" type="text/javascript"></script>
 
 </head>
 <body>
-  <td>Fatmaaa</td>
-</body>
+<div id="status">Connection Status: Not Connected</div>
+</div>
+<br>
+	 <form name="connform"  >
+
+Server:  <input type="text" id="name" name="server"><br><br>
+Port:    <input type="text"id="password" name="port"><br><br>
+Topic:    <input type="text"id="topic" name="topic"><br><br>
+User name:    <input type="text"id="name" name="name"><br><br>
+Password:    <input type="text"id="password" name="password"><br><br>
+
+
+<input type="submit" id="connect" value="Connect">
+</form>
+<hr>
+<form name="subs" action="" >
+Subscribe Topic:   <input type="text" id="Stopic" name="Stopic"><br><br>
+  <input id="submit" type="submit" value="submit">
+
+</form>
+
+<form name="smessage" action="" >
+
+Message: <input type="text" id="Pmessage" name="Pmessage"><br><br>
+Publish Topic:   <input type="text" id="Ptopic" name="Ptopic"><br><br>
+<input type="submit" id="publish" value="publish">
+</form>
+Messages:<p id="messages"></p>
+
+<tbody>
+        <tr>
+
+          <td>
+
+          </td>
+        </tr>
+
+  </body>
 </html>

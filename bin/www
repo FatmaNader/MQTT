@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('MQTT:server');
+var debug = require('debug')('mqtt-sse:server');
 var http = require('http');
 
 /**
